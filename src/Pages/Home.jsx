@@ -1,9 +1,11 @@
 import React from 'react'
+import Count from '../Components/Count'
 
 const Home = () => {
   return (
     <div>
-      this is home section
+      <Count/>
+      <Count/>
     </div>
   )
 }
