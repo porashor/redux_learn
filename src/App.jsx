@@ -2,49 +2,82 @@ import React, { useState } from 'react'
 import Count from "../src/Components/Count"
 import { Data } from './data/data'
 
+
+
+
+
+
 const App = () => {
-  // state define 
-  const [state, setState] = useState(Data)
-  // Increment functionality 
-  function Increment(data){
-    const strem = state.map((item)=>{
-      if(item.id === data){
-        return{
-          ...item,
-          value: item.value + 1,
+  const [digit, setDigit] = useState(Data)
+  // state up functionality
+  function Updo(num){
+    const daq = digit.map((val)=>{
+      if(val.id === num){
+        return {
+          ...val,
+          value: val.value + 1
         }
       }
-      return item
+      return val
     })
-    setState(strem)
+    setDigit(daq)
   }
-  // Decrement functionality 
-  function Decrement(data){
-    const strem = state.map((item)=>{
-      if(item.id === data){
-        return{
-          ...item,
-          value: item.value -1
-        } 
-      }
-      return item
-    })
-    setState(strem)
-  }
-  // total value of the list 
-  const sum = state.reduce((sum, cur)=>sum+cur.value,0)
-  console.log(sum)
+
   return (
     <div>
-      {state.map((item)=>(
-        <Count digit={item} stateUp={()=>Increment(item.id)} stateDn={()=>Decrement(item.id)}/>
+      {digit.map((item)=>(
+        <Count digit={item} stateUp={()=>Updo(item.id)}/>
       ))}
-      <div>total value is : {sum}</div>
     </div>
   )
 }
 
 export default App
+
+
+// const App = () => {
+//   // state define 
+//   const [state, setState] = useState(Data)
+//   // Increment functionality 
+//   function Increment(data){
+//     const strem = state.map((item)=>{
+//       if(item.id === data){
+//         return{
+//           ...item,
+//           value: item.value + 1,
+//         }
+//       }
+//       return item
+//     })
+//     setState(strem)
+//   }
+//   // Decrement functionality 
+//   function Decrement(data){
+//     const strem = state.map((item)=>{
+//       if(item.id === data){
+//         return{
+//           ...item,
+//           value: item.value -1
+//         } 
+//       }
+//       return item
+//     })
+//     setState(strem)
+//   }
+//   // total value of the list 
+//   const sum = state.reduce((sum, cur)=>sum+cur.value,0)
+//   console.log(sum)
+//   return (
+//     <div>
+//       {state.map((item)=>(
+//         <Count digit={item} stateUp={()=>Increment(item.id)} stateDn={()=>Decrement(item.id)}/>
+//       ))}
+//       <div>total value is : {sum}</div>
+//     </div>
+//   )
+// }
+
+// export default App
 
 
 
